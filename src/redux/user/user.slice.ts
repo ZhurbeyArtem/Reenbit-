@@ -18,8 +18,12 @@ const userSlice = createSlice({
       state.displayName = action.payload;
     },
   },
+  selectors: {
+    displayName: (state) => state.displayName
+  }
 });
 
+export const { displayName } = userSlice.selectors
 export const { setUserDisplayName } = userSlice.actions;
 
 export default userSlice.reducer;

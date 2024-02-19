@@ -1,6 +1,10 @@
 import styles from './AddBtn.module.css'
 
-const AddBtn = ({ setVisible }) => {
+interface AddBtnProps {
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const AddBtn: React.FC<AddBtnProps> = ({ setVisible }) => {
   return (
     <div className={styles.wrapper}>
       <button onClick={() => setVisible(true)} className={styles.btn} type='button'>

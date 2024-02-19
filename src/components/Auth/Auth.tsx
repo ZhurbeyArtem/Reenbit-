@@ -1,15 +1,14 @@
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut } from "firebase/auth";
+import { getAuth, signInWithPopup, signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { app, googleAuthProvider } from '../../firebase';
 import styles from './Auth.module.css'
 import { useDispatch, useSelector } from "react-redux";
-import type { RootState } from "@reduxjs/toolkit/query";
-import { setUserDisplayName } from "../../redux/user/user.slice";
+import { displayName, setUserDisplayName } from "../../redux/user/user.slice";
 
 export const AuthProvider = () => {
   const auth = getAuth(app);
   const dispatch = useDispatch();
-  const displayName = useSelector((state: RootState) => state.user.displayName);
+  const name = useSelector(displayName);
 
   const [isButtonClicked, setIsButtonClicked] = useState(false);
 
@@ -47,9 +46,9 @@ export const AuthProvider = () => {
       {!displayName && !isButtonClicked && (
         <button onClick={handleSignInWithGoogle}>Sign in with Google</button>
       )}
-      {displayName ? (
+      {name ? (
         <div className={styles.user}>
-          <p>{displayName}</p>
+          <p>{name}</p>
           <button className={styles.btn} onClick={handleSignOut}>Sign out</button> {/* Кнопка для выхода из аккаунта */}
         </div>
       ) : isButtonClicked ? (

@@ -7,15 +7,18 @@ const Filter = () => {
   const filter = useSelector(getFilter);
   const sortBy = useSelector(getSort)
   const dispatch = useDispatch();
-  const handle = (e) => {
-    dispatch(changeSort(e))
+  const handleChangeSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    dispatch(changeSort(e.target.value))
+  }
+  const handleChangeFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(changeFilter(e.target.value))
   }
   return (
     <div className={styles.wrapper}>
       <input placeholder="Search your trip" className={styles.inp} defaultValue={filter}
-        onInput={e => dispatch(changeFilter(e.target.value))} />
+        onInput={handleChangeFilter} />
       <span className={styles.icon}>&#9906;</span>
-      <select className={styles.sort} defaultValue={sortBy} onChange={(e) => handle(e.target.value)}>
+      <select className={styles.sort} defaultValue={sortBy} onChange={handleChangeSort}>
         <option value=''>Sort by</option>
         <option value='startDate'>Start date</option>
         <option value='endDate'>End date</option>
