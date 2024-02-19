@@ -1,4 +1,6 @@
-export const db = [
+import type { IDB } from "../types/List.types";
+
+export const db: IDB[] = [
   {
     city: 'Kyiv',
     url: 'https://kyiv24.news/wp-content/uploads/2023/01/kyyiv-vidkryti-dzherela-03-01-2023-2-1024x683.jpg'

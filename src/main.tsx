@@ -12,13 +12,11 @@ if (container) {
   const root = createRoot(container)
 
   root.render(
-    <React.StrictMode>
       <Provider store={store}>
         <PersistGate persistor={persistor} loading={null}>
           <App />
         </PersistGate>
       </Provider>
-    </React.StrictMode>,
   )
 } else {
   throw new Error(

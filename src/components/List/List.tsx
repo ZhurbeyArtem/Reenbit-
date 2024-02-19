@@ -22,10 +22,10 @@ const List = () => {
 
     switch (sortBy) {
       case 'startDate':
-        filteredTrips.sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+        filteredTrips.sort((a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime());
         break;
       case 'endDate':
-         filteredTrips.sort((a, b) => new Date(b.endDate) - new Date(a.endDate));
+        filteredTrips.sort((a, b) => new Date(b.endDate).getTime() - new Date(a.endDate).getTime());
         break;
       default:
     }

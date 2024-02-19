@@ -1,0 +1,14 @@
+.wrapper {
+  position: absolute;
+  right: 50px;
+}
+.user{
+  display: flex;
+  gap: 10px;
+}
+.btn{
+  padding: 5px;
+  background-color: aqua;
+  border: none;
+  border-radius: 5px;
+}

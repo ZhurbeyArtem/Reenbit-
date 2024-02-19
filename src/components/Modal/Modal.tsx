@@ -4,7 +4,12 @@ import { db } from "../../db/db";
 import { useDispatch } from "react-redux";
 import { addTrip } from '../../redux/trip/trip.slice'
 
-const Modal = ({ isVisible, setVisible }) => {
+interface ModalProps {
+  isVisible: boolean;
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Modal: React.FC<ModalProps> = ({ isVisible, setVisible }) => {
   const dispatch = useDispatch()
   const currentDate = new Date();
   const maxDate = new Date(currentDate);
@@ -18,8 +23,8 @@ const Modal = ({ isVisible, setVisible }) => {
     startDate: '',
     endDate: ''
   });
-  const formRef = useRef(null);
-  const handleChange = (e) => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prevState => ({
       ...prevState,
@@ -27,7 +32,7 @@ const Modal = ({ isVisible, setVisible }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setVisible(false)
     dispatch(addTrip(formData))
@@ -36,11 +41,11 @@ const Modal = ({ isVisible, setVisible }) => {
       startDate: '',
       endDate: ''
     })
-    formRef.current.reset();
+    if (formRef.current) formRef.current.reset();
   };
 
-  const handleClose = (e) => {
-    if (e.target.className.split('_').includes('backdrop')) setVisible(false)
+  const handleClose = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) setVisible(false)
   }
 
   return (

@@ -1,7 +1,7 @@
 import styles from './WeekItem.module.css';
 
 
-const WeekItem = ({ data }) => {
+const WeekItem: React.FC<any> = ({ data }) => {
   return (
     <li className={styles.item}>
       <p>{data.datetime}</p>

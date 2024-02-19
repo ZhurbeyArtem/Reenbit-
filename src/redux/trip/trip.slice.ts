@@ -1,7 +1,9 @@
+import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice, nanoid } from "@reduxjs/toolkit";
 import { db } from "../../db/db";
+import type { IListSlice, IDB, ILIstItem } from "../../types/List.types";
 
-const initialState = {
+const initialState: IListSlice = {
   trips: [
     {
       id: nanoid(),
@@ -32,13 +34,13 @@ export const tripSlice = createSlice({
   name: 'trips',
   initialState,
   reducers: {
-    addTrip: (state, { payload }) => {
+    addTrip: (state, { payload }: PayloadAction<{ city: string; startDate: string; endDate: string }>) => {
       let { city, startDate, endDate } = payload
-      const { url } = db.find(el => payload.city === el.city)
-      const newTrip = { id: nanoid(), city, startDate, endDate, url }
+      const foundCity = db.find((el: IDB) => payload.city === el.city)
+      const newTrip: ILIstItem = { id: nanoid(), city, startDate, endDate, url: foundCity ? foundCity.url : '' }
       state.trips.push(newTrip)
     },
-    changeSort: (state, { payload }) => {
+    changeSort: (state, { payload }: PayloadAction<string>) => {
       state.sortBy = payload
     }
   },

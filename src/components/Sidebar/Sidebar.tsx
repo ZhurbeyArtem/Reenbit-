@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './Sidebar.module.css'
 import { useSelector } from 'react-redux'
 import { getDayWeather } from '../../redux/weather/weather.slice'

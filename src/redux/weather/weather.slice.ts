@@ -1,7 +1,9 @@
+import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { fetchDayWeather, fetchWeekWeather } from "./api";
+import type { WeatherState } from "../../types/Weather.types";
 
-let initialState = {
+let initialState: WeatherState = {
   weekWeather: [],
   todayWeather: {},
   isLoading: false,
@@ -13,16 +15,16 @@ export const weatherSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    const setLoading = (state) => {
+    const setLoading = (state: WeatherState) => {
       state.isLoading = true;
       state.error = null
     }
 
-    const setLoaded = (state) => {
+    const setLoaded = (state: WeatherState) => {
       state.isLoading = false;
     }
 
-    const setError = (state, action) => {
+    const setError = (state: WeatherState, action: PayloadAction<any>) => {
       state.isLoading = false;
       state.error = action.payload;
       state.weekWeather = [];

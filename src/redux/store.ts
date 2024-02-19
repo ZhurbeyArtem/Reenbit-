@@ -14,6 +14,7 @@ import storage from 'redux-persist/lib/storage';
 import tripReducer from './trip/trip.slice'
 import filterReducer from './filter/filter.slice'
 import weatherReducer from './weather/weather.slice'
+import userReducer from './user/user.slice'
 
 const persistConfig = {
   key: 'root',
@@ -25,7 +26,8 @@ const persistConfig = {
 const reducers = combineReducers({
   trips: tripReducer,
   filter: filterReducer,
-  weather: weatherReducer
+  weather: weatherReducer,
+  user: userReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, reducers);
