@@ -1,0 +1,18 @@
+.list {
+  display: flex;
+  gap: 30px;
+flex-wrap: wrap;
+}
+
+.scrollbar {
+  height: 245px;
+  width: 700px;
+}
+.noScrollbar {
+  height: auto;
+  min-height: 245px;
+}
+.wrapper {
+  display: flex;
+  gap: 10px;
+}

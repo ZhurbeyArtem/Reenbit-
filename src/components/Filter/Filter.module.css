@@ -1,0 +1,24 @@
+.wrapper {
+  margin: 30px 0;
+  position: relative;
+  display: flex;
+  gap: 10px;
+}
+.inp {
+  padding: 10px 10px 10px 30px;
+  width: 200px;
+  border: none;
+  border-radius: 5px;
+  background-color: #d0d0d7;
+}
+.icon {
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  rotate: -45deg;
+  font-size: 25px;
+  z-index: 2;
+}
+.sort {
+  padding: 5px;
+}

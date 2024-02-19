@@ -1,0 +1,9 @@
+.item {
+  list-style: none;
+  border: 1px solid black;
+  display: flex;
+  padding: 5px;
+  flex-direction: column;
+  gap: 5px;
+  width: calc((100% - 150px) / 7);
+}
