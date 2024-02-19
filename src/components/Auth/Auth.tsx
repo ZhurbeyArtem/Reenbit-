@@ -43,7 +43,7 @@ export const AuthProvider = () => {
 
   return (
     <div className={styles.wrapper}>
-      {!displayName && !isButtonClicked && (
+      {!name && !isButtonClicked && (
         <button onClick={handleSignInWithGoogle}>Sign in with Google</button>
       )}
       {name ? (
